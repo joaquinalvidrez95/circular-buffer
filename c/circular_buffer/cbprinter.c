@@ -7,7 +7,7 @@ void cbprinter_enqueue(uint8_t element, struct circular_buffer *p_cb)
 {
     if (CIRCULAR_BUF_RET_ERR == circular_buf_enqueue(element, p_cb))
     {
-        printf("Circular buffer full\n");
+        printf("Circular buffer full: %u could not be enqueued\n", element);
     }
     else
     {
@@ -15,9 +15,10 @@ void cbprinter_enqueue(uint8_t element, struct circular_buffer *p_cb)
     }
 }
 
-void cbprinter_dequeue(uint8_t element, struct circular_buffer *p_cb)
+uint8_t cbprinter_dequeue(struct circular_buffer *p_cb)
 {
-    if (CIRCULAR_BUF_RET_ERR == circular_buf_enqueue(element, p_cb))
+    uint8_t element = 0u;
+    if (CIRCULAR_BUF_RET_ERR == circular_buf_dequeue(&element, p_cb))
     {
         printf("Circular buffer empty\n");
     }
@@ -25,4 +26,5 @@ void cbprinter_dequeue(uint8_t element, struct circular_buffer *p_cb)
     {
         printf("Element dequeued: %u\n", element);
     }
+    return element;
 }

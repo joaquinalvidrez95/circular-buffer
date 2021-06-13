@@ -33,7 +33,7 @@ void circular_buf_init(struct circular_buffer *p_this,
 enum circular_buf_ret circular_buf_enqueue(uint8_t element,
                                            struct circular_buffer *p_this);
 
-enum circular_buf_ret circular_buf_dequeue(uint8_t element,
+enum circular_buf_ret circular_buf_dequeue(uint8_t *p_element,
                                            struct circular_buffer *p_this);
 
 #endif // CIRCULAR_BUFFER_H
